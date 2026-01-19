@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def max_integer(my_list=[]):
-    for i in my_list:
-        if i == max(my_list):
-            return i
-    return None
+    sorted_list = sorted(my_list)
+    if len(sorted_list) == 0:
+        return None
+    return sorted_list[-1]
