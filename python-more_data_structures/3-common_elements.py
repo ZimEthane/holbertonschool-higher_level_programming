@@ -4,5 +4,5 @@ def common_elements(set_1, set_2):
     for i in set_1:
         for j in set_2:
             if i == j:
-                new_list.append(set_1[i])
+                new_list.append(i)
     return new_list
