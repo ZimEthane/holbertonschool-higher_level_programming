@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """"
 module 0-add_integer
-This module contains a function that adds two integers. 
+This module contains a function that adds two integers.
 The function checks for type errors and raises appropriate exceptions.
 
 """
