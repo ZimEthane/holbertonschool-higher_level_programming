@@ -1,43 +1,28 @@
-#!/usr/bin/
+#!/usr/bin/python3
 """
-module matrix_divided
+This module provides a function that divide all elements of a matrix
+"""
 
-"""
+
 def matrix_divided(matrix, div):
     """
-    Divides all elements of a matrix by div
+    Divide all elements of a matrix
 
-    Args:
-        matrix (list of lists of int/float): The matrix to be divided
-        div (int/float): The divisor
-
-    Returns:
-        list of lists of float: A new matrix with the divided values
-
-    Raises:
-        TypeError: If matrix is not a list of lists of integers/floats
-                   or if div is not a number
-        ZeroDivisionError: If div is zero
-        TypeError: If rows of the matrix are not the same size
+    :param matrix: the matrix will be cloned then divided
+    :param div: the divider
     """
-    if not isinstance(div, (int, float)):
+    if not isinstance(div, (int, float)) or isinstance(div, float):
         raise TypeError("div must be a number")
-    if div == 0:
+    elif div == 0:
         raise ZeroDivisionError("division by zero")
-
-    if (not isinstance(matrix, list) or
-            not all(isinstance(row, list) for row in matrix) or
-            not all(isinstance(num, (int, float)) for row in matrix for num in row)):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
-
-    row_length = len(matrix[0])
-    for row in matrix:
-        if len(row) != row_length:
+    try:
+        if matrix and len({len(row) for row in matrix}) > 1:
             raise TypeError("Each row of the matrix must have the same size")
-
-    new_matrix = []
-    for row in matrix:
-        new_row = [round(num / div, 2) for num in row]
-        new_matrix.append(new_row)
-
-    return new_matrix
+        return [[round(subelement / div, 2) for subelement in element]
+                for element in matrix]
+    except TypeError as error:
+        if "row" in str(error):
+            raise TypeError("Each row of the matrix must have the same size")
+        else:
+            raise TypeError(
+                "matrix must be a matrix (list of lists) of integers/floats")
