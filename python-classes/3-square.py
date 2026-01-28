@@ -1,34 +1,35 @@
 #!/usr/bin/python3
-
 """
-Docstring pour python-classes.3-square
-Defines a Square class with a private instance attribute size.
-The size attribute is initialized through the constructor with a default value of 0.
-The constructor raises exceptions for invalid size values.
-Includes a method to calculate the area of the square.
-
+This module defines a Square class with size validation and an area method.
 """
 
 
 class Square:
+    """
+    Represents a square with size validation and area calculation.
+    Attributes:
+        __size (int): The size of the square.
+    """
     def __init__(self, size=0):
+        """
+        Initialize a Square instance with a given size.
+        Args:
+            size (int): The size of the square (default is 0).
+        Raises:
+            TypeError: If size is not an integer.
+            ValueError: If size is negative.
+        """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         if size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
-    """
-    Docstring pour Square
-    Defines a Square class with a private instance attribute size.
-    The size attribute is initialized through the constructor
-    with a default value of 0.
-    The constructor raises exceptions for invalid size values.
-    Includes a method to calculate the area of the square."""
 
     def area(self):
+        """
+        Calculate and return the area of the square.
+        Returns:
+            int: The area of the square.
+        """
         return self.__size * self.__size
-    """
-    Docstring pour area
-    Calculates and returns the area of the square.
-    """
     pass

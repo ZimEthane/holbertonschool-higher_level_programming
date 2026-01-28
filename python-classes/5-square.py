@@ -1,68 +1,48 @@
 #!/usr/bin/python3
 """
-Docstring pour python-classes.4-square
-Defines a Square class with a private instance attribute size.
-The size attribute is initialized through the constructor
-with a default value of 0.
-The constructor raises exceptions for invalid size values.
-Includes a method to calculate the area of the square.
+This module defines a Square class with size validation, area calculation,
+and a method to print the square using '#' characters.
 """
 
 
 class Square:
+    """
+    Represents a square with size validation, area calculation, and printing.
+    Attributes:
+        __size (int): The size of the square.
+    """
     def __init__(self, size=0):
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         if size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
-    """
-    Docstring pour Square
-    Defines a Square class with a private instance attribute size.
-    The size attribute is initialized through the constructor
-    with a default value of 0.
-    The constructor raises exceptions for invalid size values.
-    Includes a method to calculate the area of the square.
-    """
 
     @property
     def size(self):
+        """int: Retrieves the size of the square."""
         return self.__size
-    """
-    Docstring pour size
-    Getter method to retrieve the size of the square.
-    """
 
     @size.setter
     def size(self, value):
+        """Sets the size of the square."""
         if not isinstance(value, int):
-            raise TypeError("size must be an integer")
+            raise TypeError("value must be an integer")
         if value < 0:
-            raise ValueError("size must be >= 0")
+            raise ValueError("value must be >= 0")
         self.__size = value
-    """
-    Docstring pour size
-    Setter method to set the size of the square with validation.
-    """
 
     def area(self):
+        """Calculate and return the area of the square."""
         return self.__size * self.__size
-    """
-    Docstring pour area
-    Calculates and returns the area of the square.
-    """
 
     def my_print(self):
+        """Print the square using '#' characters."""
         if self.__size == 0:
-            print("")
+            print()
         else:
             for i in range(0, self.__size):
                 for j in range(0, self.__size):
                     print("#", end="")
-                print("")
-    """
-    Docstring pour my_print
-    Prints the square using the '#' character.
-    """
-
+                print()
     pass

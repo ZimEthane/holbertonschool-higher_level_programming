@@ -1,54 +1,55 @@
 #!/usr/bin/python3
+"""Simple square module.
 
-"""Docstring pour python-classes.4-square
-Defines a Square class with a private instance attribute size.
-The size attribute is initialized through the constructor with a default value of 0.
-The constructor raises exceptions for invalid size values.
-Includes a method to calculate the area of the square.
+This module contains the definition of the Square class,
+which keeps the size of a square in a private attribute.
 """
 
 
 class Square:
+    """Represents a square.
+
+    This class stores the size of the square in a private attribute.
+
+    Attributes:
+        __size (int): The size of the square.
+    """
+
     def __init__(self, size=0):
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = size
-    """
-    Docstring pour Square
-    Defines a Square class with a private instance attribute size.
-    The size attribute is initialized through the constructor
-    with a default value of 0.
-    The constructor raises exceptions for invalid size values.
-    Includes a method to calculate the area of the square.
-    """
+        """Initializes a new Square.
+
+        Args:
+            size (int, optional): The size of the square. Defaults to 0.
+        """
+        self.size = size
+
+    def area(self):
+        """Return the area of the square.
+
+        Returns:
+            int: The current area of the square.
+        """
+        return (self.__size ** 2)
 
     @property
     def size(self):
-        return self.__size
-    """
-    Docstring pour size
-    Getter method to retrieve the size of the square.
-    """
+        """int: Retrieves the size of the square."""
+        return (self.__size)
 
     @size.setter
     def size(self, value):
+        """Sets the size of the square.
+
+        Args:
+            value (int): The new size of the square.
+
+        Raises:
+            TypeError: If size is not an integer.
+            ValueError: If size is less than 0.
+        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
-    """
-    Docstring pour size
-    Setter method to set the size of the square with validation.
-    """
-
-    def area(self):
-        return self.__size * self.__size
-    """
-    Docstring pour area
-    Calculates and returns the area of the square.
-    """
-
     pass
