@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 Module that defines a Rectangle class with area and perimeter methods.
@@ -66,4 +65,3 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
-    pass
