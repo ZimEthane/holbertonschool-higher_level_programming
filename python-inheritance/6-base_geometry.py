@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""module docstring for python-inheritance.6-base_geometry"""
+
+
 class BaseGeometry:
     """
     Classe BaseGeometry.

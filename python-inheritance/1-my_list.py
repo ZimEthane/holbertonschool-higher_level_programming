@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""module docstring for python-inheritance.1-my_list"""
+
+
 class MyList(list):
     """
     Classe MyList qui hérite de la classe list.

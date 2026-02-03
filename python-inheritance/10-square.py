@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""module docstring for python-inheritance.10-square"""
 Rectangle = __import__('9-rectangle').Rectangle
 
 

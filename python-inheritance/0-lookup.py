@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""module docstring for python-inheritance.0-lookup"""
+
+
 def lookup(obj):
     """
     Retourne la liste des attributs et méthodes disponibles d'un objet.

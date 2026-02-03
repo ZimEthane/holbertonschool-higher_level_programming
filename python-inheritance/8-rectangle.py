@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""module docstring for python-inheritance.8-rectangle"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 

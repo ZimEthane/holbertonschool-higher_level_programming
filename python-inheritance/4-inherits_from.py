@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""module docstring for python-inheritance.4-inherits_from"""
+
+
 def inherits_from(obj, a_class):
     """
     Retourne True si obj est une instance d'une classe
