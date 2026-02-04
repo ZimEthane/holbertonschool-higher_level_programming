@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-"""module docstring for python-inheritance.1-my_list"""
+"""
+Module that defines a class MyList that inherits from list.
+The class has a method to print the list in sorted order.
+"""
 
 
 class MyList(list):
+    """A class that inherits from list and has a method to print
+    the list in sorted order.
     """
-    Classe MyList qui hérite de la classe list.
-    """
-
     def print_sorted(self):
-        """
-        Affiche la liste triée par ordre croissant
-        sans modifier la liste originale.
-        """
+        """Prints the list in sorted order."""
         print(sorted(self))
