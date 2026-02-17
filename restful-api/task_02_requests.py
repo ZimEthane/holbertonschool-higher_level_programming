@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+module to fetch posts from an API and print their IDs
+and titles, and save them to a JSON file.
+"""
 import requests
 import json
 
@@ -6,6 +10,7 @@ url = 'https://jsonplaceholder.typicode.com/posts'
 
 
 def fetch_and_print_posts():
+    """Fetches posts from the API and prints their IDs and titles."""
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -17,6 +22,7 @@ def fetch_and_print_posts():
 
 
 def fetch_and_save_posts():
+    """Fetches posts from the API and saves them to a JSON file."""
     response = requests.get(url)
 
     if response.status_code == 200:
