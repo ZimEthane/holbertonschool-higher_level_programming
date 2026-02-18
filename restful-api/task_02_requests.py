@@ -1,34 +1,60 @@
 #!/usr/bin/python3
 """
-module to fetch posts from an API and print their IDs
-and titles, and save them to a JSON file.
+Module that fetches posts from a RESTful API and either prints their titles
+or saves them to a CSV file.
 """
 import requests
-import json
-
-url = 'https://jsonplaceholder.typicode.com/posts'
+import csv
+url = "https://jsonplaceholder.typicode.com/posts/"
 
 
 def fetch_and_print_posts():
-    """Fetches posts from the API and prints their IDs and titles."""
-    response = requests.get(url)
+    """
+    Fetches posts from the API and prints their titles.
+    If the request fails, it prints "Status Code: None".
+    """
+    try:
+        request = requests.get(url)
+    except requests.RequestException:
+        print("Status Code: None")
+        return
 
-    if response.status_code == 200:
-        posts = response.json()
+    print(f"Status Code: {request.status_code}")
+    if request.status_code == 200:
+        try:
+            posts = request.json()
+        except ValueError:
+            print("Status Code: None")
+            return
         for post in posts:
-            print(f"Post ID: {post['id']}, Title: {post['title']}")
-    else:
-        print(f"Failed to fetch posts. Status code: {response.status_code}")
+            print(post["title"])
 
 
 def fetch_and_save_posts():
-    """Fetches posts from the API and saves them to a JSON file."""
-    response = requests.get(url)
+    """
+    Fetches posts from the API and saves them to a CSV file.
+    If the request fails, it prints "Status Code: None".
+    """
+    try:
+        request = requests.get(url)
+    except requests.RequestException:
+        print("Status Code: None")
+        return
 
-    if response.status_code == 200:
-        posts = response.json()
-        with open('posts.json', 'w') as file:
-            json.dump(posts, file, indent=4)
-        print("Posts have been saved to posts.json")
-    else:
-        print(f"Failed to fetch posts. Status code: {response.status_code}")
+    print(f"Status Code: {request.status_code}")
+    if request.status_code == 200:
+        try:
+            posts = request.json()
+        except ValueError:
+            print("Status Code: None")
+            return
+        with open("posts.csv", "w", newline="", encoding="utf-8") as csvfile:
+            fieldnames = ["id", "title", "body"]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for post in posts:
+                writer.writerow({
+                    "id": post.get("id"),
+                    "title": post.get("title"),
+                    "body": post.get("body")
+                })
