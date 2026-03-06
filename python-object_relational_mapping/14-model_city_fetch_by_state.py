@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Lists all City objects from the database hbtn_0e_14_usa"""
 import sys
 from sqlalchemy import create_engine
