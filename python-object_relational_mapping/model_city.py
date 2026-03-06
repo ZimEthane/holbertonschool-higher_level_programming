@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """Contains the City class for ORM mapping"""
 from sqlalchemy import Column, Integer, String, ForeignKey
-from model_state import Base 
+from model_state import Base
+
 
 class City(Base):
     """Represents a city linked to a state"""

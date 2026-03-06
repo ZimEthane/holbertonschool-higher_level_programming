@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """Lists all City objects from the database hbtn_0e_14_usa"""
 import sys
 from sqlalchemy import create_engine
@@ -21,7 +20,8 @@ if __name__ == "__main__":
     cities = session.query(City).order_by(City.id).all()
 
     for city in cities:
-        state_name = session.query(State).filter(State.id == city.state_id).first().name
+        state_name = session.query(State).filter(
+            State.id == city.state_id).first().name
         print(f"{state_name}: ({city.id}) {city.name}")
 
     session.close()
