@@ -1,25 +1,41 @@
 #!/usr/bin/python3
-"""Displays all values in the states table of hbtn_0e_0_usa
-where the name matches the argument (SAFE)."""
+"""List all states from the database."""
+
 import MySQLdb
 import sys
 
 
-if __name__ == "__main__":
+def main():
+    """Run the SQL query and print results."""
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    state_searched = sys.argv[4]
+
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3]
+        user=username,
+        passwd=password,
+        db=database,
     )
-    cur = db.cursor()
-    cur.execute(
-        "SELECT * FROM states WHERE name = %s ORDER BY id ASC",
-        (sys.argv[4],)
-    )
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
-    cur.close()
+
+    cursor = db.cursor()
+
+    cursor.execute("""
+        SELECT * FROM states
+        WHERE name = %s
+        ORDER BY id ASC;
+        """, (state_searched,))
+
+    states = cursor.fetchall()
+
+    for state in states:
+        print(state)
+
+    cursor.close()
     db.close()
+
+
+if __name__ == "__main__":
+    main()

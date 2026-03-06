@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""List all State objects from the specified MySQL database."""
+"""Create the states table in the specified MySQL database."""
 
 import sys
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
 from model_state import Base, State
 
 
@@ -14,10 +13,4 @@ if __name__ == "__main__":
         ),
         pool_pre_ping=True,
     )
-
-    session = Session(engine)
-
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
-
-    session.close()
+    Base.metadata.create_all(engine)
